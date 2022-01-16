@@ -1,3 +1,10 @@
+<%@page import="java.util.List"%>
+<%@page import="com.poscoict.guestbook.dao.GuestbookDao"%>
+<%@page import="com.poscoict.guestbook.vo.GuestbookVo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	List<GuestbookVo> list = (List<GuestbookVo>)request.getAttribute("list");
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,16 +15,7 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header">
-			<h1>MySite</h1>
-			<ul>
-				<li><a href="">로그인</a><li>
-				<li><a href="">회원가입</a><li>
-				<li><a href="">회원정보수정</a><li>
-				<li><a href="">로그아웃</a><li>
-				<li>님 안녕하세요 ^^;</li>
-			</ul>
-		</div>
+		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="guestbook">
 				<form action="/guestbook" method="post">
@@ -36,36 +34,33 @@
 					</table>
 				</form>
 				<ul>
-					<li>
-						<table>
-							<tr>
-								<td>[4]</td>
-								<td>안대혁</td>
-								<td>2015-11-10 11:22:30</td>
-								<td><a href="">삭제</a></td>
-							</tr>
-							<tr>
-								<td colspan=4>
-								안녕하세요. ^^;<br>
-								하하하하	
-								</td>
-							</tr>
-						</table>
-						<br>
-					</li>
+					<%
+						int count = list.size();
+						int index = 0;
+						for(GuestbookVo vo : list) {
+					%>
+						<li>
+							<table>
+								<tr>
+									<td>[<%=count-index++ %>]</td>
+									<td><%=vo.getName() %></td>
+									<td><%=vo.getRegDate() %></td>
+									<td><a href="<%=request.getContextPath() %>/guestbook?a=deleteform&no=<%=vo.getNo() %>">삭제</a></td>
+								</tr>
+								<tr>
+									<td colspan=4><%=vo.getMessage().replaceAll("\n", "<br/>") %></td>
+								</tr>
+							</table>
+							<br>
+						</li>
+					<%
+						}
+					%>
 				</ul>
 			</div>
 		</div>
-		<div id="navigation">
-			<ul>
-				<li><a href="">안대혁</a></li>
-				<li><a href="">방명록</a></li>
-				<li><a href="">게시판</a></li>
-			</ul>
-		</div>
-		<div id="footer">
-			<p>(c)opyright 2015, 2016, 2017, 2018</p>
-		</div>
+		<jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp" />
 	</div>
 </body>
 </html>
