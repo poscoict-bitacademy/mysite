@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.poscoict.mysite.dao.UserDao;
 import com.poscoict.mysite.vo.UserVo;
@@ -29,7 +30,9 @@ public class LoginAction implements Action {
 		}
 		
 		// 인증 처리(Session 처리)
+		HttpSession session = request.getSession(true);
+		session.setAttribute("authUser", authUser);
 		
+		MvcUtil.redirect(request.getContextPath(), request, response);
 	}
-
 }
