@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.poscoict.mysite.mvc.main.MainActionFactory;
 import com.poscoict.mysite.mvc.user.UserActionFactory;
 import com.poscoict.web.mvc.Action;
 import com.poscoict.web.mvc.ActionFactory;
