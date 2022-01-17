@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.poscoict.mysite.dao.GuestbookDao;
 import com.poscoict.mysite.vo.GuestbookVo;
 import com.poscoict.web.mvc.Action;
-import com.poscoict.web.util.MvcUtils;
+import com.poscoict.web.util.MvcUtil;
 
 public class AddAction implements Action {
 
@@ -25,7 +25,7 @@ public class AddAction implements Action {
 		vo.setMessage(message);
 		
 		new GuestbookDao().insert(vo);
-		MvcUtils.redirect(request.getContextPath() + "/guestbook", request, response);
+		MvcUtil.redirect(request.getContextPath() + "/guestbook", request, response);
 	}
 
 }
