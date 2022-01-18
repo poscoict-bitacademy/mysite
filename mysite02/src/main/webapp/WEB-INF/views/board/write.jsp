@@ -4,7 +4,7 @@
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 		</div>
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="/board">
+				<form class="board-form" method="post" action="${pageContext.request.contextPath }/board">
 					<input type = "hidden" name = "a" value="write">
 					<table class="tbl-ex">
 						<tr>
