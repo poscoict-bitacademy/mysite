@@ -14,9 +14,7 @@ public class GuestbookController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		String actionName = request.getParameter("a");
-
 		ActionFactory af = new GuestbookActionFactory();
 		Action action = af.getAction(actionName);
 		action.execute(request, response);
