@@ -25,7 +25,7 @@
     <servlet-class>com.poscoict.mysite.controller.MainController
 		</servlet-class>
     <init-param>
-      <param-name>config</param-name>
+      <param-name>contextConfigLocation</param-name>
       <param-value>/WEB-INF/servlet-context.xml</param-value>
     </init-param>
   </servlet>
