@@ -57,7 +57,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/update/{no}")
 	public String update(HttpSession session, @PathVariable("no") Long no, Model model) {
-		/* access controller */
+		/* access control */
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		if(authUser == null) {
 			return "redirect:/";
@@ -71,7 +71,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(HttpSession session, BoardVo boardVo, @RequestParam(value = "p", required = true, defaultValue = "1") Integer page, @RequestParam(value = "kwd", required = true, defaultValue = "") String keyword) {
-		/* access controller */
+		/* access control */
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		if(authUser == null) {
 			return "redirect:/";
@@ -85,7 +85,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write(HttpSession session) {
-		/* access controller */
+		/* access control */
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		if(authUser == null) {
 			return "redirect:/";
@@ -96,7 +96,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(HttpSession session, @ModelAttribute BoardVo boardVo, @RequestParam(value = "p", required = true, defaultValue = "1") Integer page, @RequestParam(value = "kwd", required = true, defaultValue = "") String keyword) {
-		/* access controller */
+		/* access control */
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		if(authUser == null) {
 			return "redirect:/";
@@ -110,7 +110,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/reply/{no}")
 	public String reply(HttpSession session, @PathVariable("no") Long no, Model model) {
-		/* access controller */
+		/* access control */
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		if(authUser == null) {
 			return "redirect:/";
