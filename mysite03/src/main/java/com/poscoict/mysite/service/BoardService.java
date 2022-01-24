@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import com.poscoict.mysite.vo.BoardVo;
 
 @Service
-public 
-class BoardService {
+public class BoardService {
 	// 새글, 답글 달기
 	public boolean addContents(BoardVo vo) {
 		if(vo.getGroupNo() != null ) {
