@@ -29,7 +29,7 @@ public class BoardController {
 		Map<String, Object> map = boardService.getContentsList(page, keyword);
 		
 		model.addAttribute("map", map);
-		// 동일: model.addAllAttributes(map);
+		// 참고: model.addAllAttributes(map);
 		
 		return "board/index";
 	}
