@@ -54,6 +54,54 @@ public class UserRepository {
 	}
 	
 
+	public UserVo findByNo(Long userNo) {
+		UserVo result = null;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "select no, name, email, gender from user where no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, userNo);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Long no = rs.getLong(1);
+				String name = rs.getString(2);
+				String email = rs.getString(3);
+				String gender = rs.getString(4);
+				
+				result = new UserVo();
+				result.setNo(no);
+				result.setName(name);
+				result.setEmail(email);
+				result.setGender(gender);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		return result;
+	}
 
 	public UserVo findByEmailAndPassword(String email, String password) {
 		UserVo result = null;
