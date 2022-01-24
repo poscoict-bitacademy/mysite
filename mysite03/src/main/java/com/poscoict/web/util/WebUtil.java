@@ -1,4 +1,4 @@
-package com.poscoictweb.util;
+package com.poscoict.web.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

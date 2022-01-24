@@ -4,7 +4,7 @@ public class BoardVo {
 	private Long no;
 	private String title;
 	private String contents;
-	private int hit;
+	private Integer hit;
 	private Integer groupNo;
 	private Integer orderNo;
 	private Integer depth;
@@ -29,10 +29,10 @@ public class BoardVo {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public int getHit() {
+	public Integer getHit() {
 		return hit;
 	}
-	public void setHit(int hit) {
+	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
 	public Integer getGroupNo() {
