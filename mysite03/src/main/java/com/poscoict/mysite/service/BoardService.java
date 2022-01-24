@@ -78,7 +78,7 @@ public class BoardService {
 		
 		//4. 리스트 가져오기
 		List<BoardVo> list = boardRepository.findAllByPageAndKeword(keyword, currentPage, LIST_SIZE);
-		
+
 		//5. 리스트 정보를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		

@@ -82,7 +82,7 @@ public class BoardRepository {
 					"       limit ?, ?";
 				pstmt = conn.prepareStatement(sql);
 			
-				pstmt.setInt(1, page);
+				pstmt.setInt(1, (page-1)*size);
 				pstmt.setInt(2, size);
 			} else {
 				String sql = 
@@ -102,11 +102,12 @@ public class BoardRepository {
 			
 				pstmt.setString(1, "%" + keyword + "%");
 				pstmt.setString(2, "%" + keyword + "%");
-				pstmt.setInt(3, page);
+				pstmt.setInt(3, (page-1)*size);
 				pstmt.setInt(4, size);
 			}
 			
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				BoardVo vo = new BoardVo();
 				
@@ -117,7 +118,7 @@ public class BoardRepository {
 				vo.setDepth(rs.getInt(5));
 				vo.setUserName(rs.getString(6));
 				vo.setUserNo(rs.getLong(7));
-				
+
 				result.add(vo);
 			}
 		} catch (SQLException e) {
