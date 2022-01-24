@@ -13,6 +13,7 @@
 	</properties>		
 	
 	<dependencies>
+		<!-- JSTL -->	
 		<dependency>
 		    <groupId>jstl</groupId>
 		    <artifactId>jstl</artifactId>
@@ -76,6 +77,7 @@
 		
 	<modules>
 		<module>mysite02</module>
+		<module>mysite03</module>
 	</modules>
 	
 	
