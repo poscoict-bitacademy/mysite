@@ -19,10 +19,10 @@ public class GuestbookService {
 	}
 	
 	public Boolean deleteMessage(Long no, String password) {
-		return guestbookRepository.delete(no, password);
+		return guestbookRepository.delete(no, password) == 1;
 	}
 	
 	public Boolean addMessage(GuestbookVo vo) {
-		return guestbookRepository.insert(vo);
+		return guestbookRepository.insert(vo) == 1;
 	}
 }

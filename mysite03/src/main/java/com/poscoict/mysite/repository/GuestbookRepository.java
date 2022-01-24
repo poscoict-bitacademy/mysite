@@ -68,7 +68,7 @@ public class GuestbookRepository {
 		return list;
 	}
 	
-	public Boolean delete(Long no, String password) {
+	public int delete(Long no, String password) {
 		GuestbookVo vo = new GuestbookVo();
 		vo.setNo(no);
 		vo.setPassword(password);
@@ -76,8 +76,8 @@ public class GuestbookRepository {
 		return delete(vo);
 	}	
 
-	public Boolean delete(GuestbookVo vo) {
-		boolean result = false;
+	public int delete(GuestbookVo vo) {
+		int result = 0;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -94,9 +94,7 @@ public class GuestbookRepository {
 			pstmt.setLong(1, vo.getNo());
 			pstmt.setString(2, vo.getPassword());
 			
-			int count = pstmt.executeUpdate();
-			result = count == 1;
-			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		} finally {
@@ -115,8 +113,8 @@ public class GuestbookRepository {
 		return result;		
 	}
 	
-	public boolean insert(GuestbookVo vo) {
-		boolean result = false;
+	public int insert(GuestbookVo vo) {
+		int result = 0;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -133,9 +131,7 @@ public class GuestbookRepository {
 			pstmt.setString(2, vo.getPassword());
 			pstmt.setString(3, vo.getMessage());
 			
-			int count = pstmt.executeUpdate();
-			result = count == 1;
-			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		} finally {

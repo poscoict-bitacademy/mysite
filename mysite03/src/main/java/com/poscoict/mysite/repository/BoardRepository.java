@@ -21,7 +21,7 @@ public class BoardRepository {
 			conn = getConnection();
 			
 			if(boardVo.getGroupNo() == null) {
-				String sql = "insert  into board values(null, ?, ?, 0, (select ifnull(max( group_no ), 0 ) + 1 from board a), 1, 0, now(), ?)";
+				String sql = "insert  into board values(null, ?, ?, 0, (select ifnull(max( g_no ), 0 ) + 1 from board a), 1, 0, now(), ?)";
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setString(1, boardVo.getTitle());
@@ -78,7 +78,7 @@ public class BoardRepository {
 					"              a.user_no as userNo" + 
 				    "       from board a, user b" + 
 					"     where a.user_no = b.no" + 
-				    " order by group_no desc, order_no asc" + 
+				    " order by g_no desc, o_no asc" + 
 					"       limit ?, ?";
 				pstmt = conn.prepareStatement(sql);
 			
@@ -96,7 +96,7 @@ public class BoardRepository {
 					    "       from board a, user b" + 
 						"     where a.user_no = b.no" +
 					    "        and (title like ? or contents like ?)" + 
-					    " order by group_no desc, order_no asc" + 
+					    " order by g_no desc, o_no asc" + 
 						"       limit ?, ?";
 				pstmt = conn.prepareStatement(sql);
 			
@@ -218,7 +218,7 @@ public class BoardRepository {
 		try {
 			conn = getConnection();
 
-			String sql = "select	no, title, contents, group_no as groupNo, order_no as orderNo, depth, user_no as userNo from board where no = ?";
+			String sql = "select	no, title, contents, g_no as groupNo, o_no as orderNo, depth, user_no as userNo from board where no = ?";
 			pstmt = conn.prepareStatement(sql);
 				
 			pstmt.setLong(1, no);
@@ -340,7 +340,7 @@ public class BoardRepository {
 		try {
 			conn = getConnection();
 			
-			String sql = "update board set order_no = order_no + 1 where group_no = ? and order_no >= ?";
+			String sql = "update board set o_no = o_no + 1 where g_no = ? and o_no >= ?";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, groupNo);
