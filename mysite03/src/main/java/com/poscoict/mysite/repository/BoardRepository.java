@@ -7,11 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.poscoict.mysite.vo.BoardVo;
 
 @Repository
 public class BoardRepository {
+	@Autowired
+	private SqlSession sqlSession;
+	
 	public int insert(BoardVo boardVo) {
 		int result = 0;
 		Connection conn = null;
@@ -367,49 +373,7 @@ public class BoardRepository {
 	}
 	
 	public int getTotalCount(String keyword) {
-		int result = 0;		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-				
-		try {
-			conn = getConnection();
-			
-			if(keyword == null || "".equals(keyword)) {
-				String sql = "select count(*) from board";
-				pstmt = conn.prepareStatement(sql);
-			} else {
-				String sql = "select count(*) from board where title like ? or contents like ?";
-				pstmt = conn.prepareStatement(sql);
-				
-				pstmt.setString(1, "%" + keyword + "%");
-				pstmt.setString(2, "%" + keyword + "%");
-			}
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			System.out.println("error:" + e);
-		} finally {
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return result;
+		return sqlSession.selectOne("board.getTotalCount", keyword);
 	}
 	
 	private Connection getConnection() throws SQLException {
