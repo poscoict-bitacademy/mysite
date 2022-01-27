@@ -13,6 +13,12 @@
 			]]>			
 		</selectKey>	
 	</insert>
+
+	<delete id="delete" parameterType="guestbookvo">
+		<![CDATA[
+		delete from guestbook where no=#{no } and password=#{password }
+		]]>		
+	</delete>
 	
 	<select id="findAll" resultType="guestbookvo">
 		<![CDATA[
