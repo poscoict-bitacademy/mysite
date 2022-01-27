@@ -9,7 +9,9 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+	<!-- auto proxy -->
+	<aop:aspectj-autoproxy />
+	
 	<!-- Message Converter, Handler Mapping, Validator 생성 및 설정 -->
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
