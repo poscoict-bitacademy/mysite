@@ -41,7 +41,6 @@
 			<mvc:exclude-mapping path="/assets/**"/>
 			<bean class="com.poscoict.mysite.security.AuthInterceptor"/>
 		</mvc:interceptor>
-
 	</mvc:interceptors>	
 	
 	<!-- ViewResolver -->
