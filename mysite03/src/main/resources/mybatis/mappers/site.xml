@@ -6,4 +6,11 @@
 		   select no, title, welcome, profile, description from site
 		]]>
 	</select>
+
+	<select id="update" resultType="sitevo">
+		<![CDATA[
+			update site set title=#{title }, welcome=#{welcome }, profile=#{profile }, description=#{description }
+		]]>
+	</select>
+
 </mapper>
