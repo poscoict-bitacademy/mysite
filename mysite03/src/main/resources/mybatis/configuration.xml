@@ -5,10 +5,12 @@
 		<typeAlias type="com.poscoict.mysite.vo.UserVo" alias="uservo"/>
 		<typeAlias type="com.poscoict.mysite.vo.GuestbookVo" alias="guestbookvo"/>
 		<typeAlias type="com.poscoict.mysite.vo.BoardVo" alias="boardvo"/>
+		<typeAlias type="com.poscoict.mysite.vo.SiteVo" alias="sitevo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/guestbook.xml" />
 		<mapper resource="mybatis/mappers/board.xml" />
+		<mapper resource="mybatis/mappers/site.xml" />
 	</mappers>
 </configuration>

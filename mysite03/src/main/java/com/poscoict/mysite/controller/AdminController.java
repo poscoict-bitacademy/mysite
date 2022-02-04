@@ -1,23 +1,26 @@
 package com.poscoict.mysite.controller;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.poscoict.mysite.security.Auth;
+import com.poscoict.mysite.service.SiteService;
+import com.poscoict.mysite.vo.SiteVo;
 
-@Auth(role="ADMIN")
+//@Auth(role="ADMIN")
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 	
 	@Autowired
-	private ServletContext servletContext;
+	private SiteService siteService;
 	
 	@RequestMapping("")
-	public String main() {
+	public String main(Model model) {
+		SiteVo site = siteService.getSite();
+
+		model.addAttribute("site", site);
 		return "admin/main";
 	}
 
