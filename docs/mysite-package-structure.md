@@ -30,8 +30,13 @@
                  |	         |--- com 
                  |	         |		|--- poscoict
                  |	         |		|		|--- mysite
-                 |	         |		|		|	|--- config
-                 |	         |		|		|	|		|--- app
-                 |	         |		|		|	|		|		|-- jdbc.properties
-                 |	         |		|		|	|		|--- web
+                 |	         |		|		|		|--- config
+                 |	         |		|		|		|		|--- app
+                 |	         |		|		|		|		|		|--- jdbc.properties
+                 |	         |		|		|		|		|		|--- mybatis
+                 |	         |		|		|		|		|		|		|--- configuration.xml
+                 |	         |		|		|		|		|		|		|--- mappers
+                 |	         |		|		|		|		|		|		|		|--- board.xml
+                 |	         |		|		|		|		|		|		|		|--- user.xml
+                 |	         |		|		|		|		|--- web
 <pre>                 
