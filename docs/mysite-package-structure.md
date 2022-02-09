@@ -39,4 +39,8 @@
                  |	         |		|		|		|		|		|		|		|--- board.xml
                  |	         |		|		|		|		|		|		|		|--- user.xml
                  |	         |		|		|		|		|--- web
+                 |	         |		|		|		|		|		|--- fileupload.properties
+                 |	         |		|		|		|		|		|--- messages
+                 |	         |		|		|		|		|		|		|--- messages_ko.properties
+
 <pre>                 
