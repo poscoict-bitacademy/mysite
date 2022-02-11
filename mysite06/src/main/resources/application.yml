@@ -2,7 +2,6 @@ spring:
    profiles:
       active: dev
 
-
 ---
 
 # common: spring boot configuration
@@ -18,9 +17,25 @@ spring:
          prefix: /WEB-INF/views/
          suffix: .jsp
 
-   # 
+   # message resource(Internationalization)
+   messages:
+      always-message-format: true
+      basename: messages/messages_ko
+      encoding: UTF-8
+
+   # multipart
+   multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+   # aop(@EnableAspectJAutoProxy)
+   aop:
+      auto: true
+      proxy-target-class: true
 
 ---
+
 # dev profile: spring boot configuration
 spring:
    config:
@@ -38,6 +53,7 @@ spring:
          maximum-pool-size: 20
 
 ---
+
 # production profile: spring boot configuration
 spring:
    config:
@@ -56,6 +72,7 @@ spring:
 
 
 ---
+
 # server
 server:
    port: 8080
@@ -64,14 +81,18 @@ server:
       encoding:
          charset: utf-8
          enabled: true
-         forced: false
-         forced-request: false
-         forced-response: false 
+         force: false
+         force-request: false
+         force-response: false 
 
 ---
+
 # mybatis
 mybatis:
    config-location: classpath:mybatis/configuration.xml
 
 ---
+
 # logging
+logging:
+   config: classpath:logback.xml
