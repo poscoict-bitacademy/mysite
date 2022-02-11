@@ -1,0 +1,77 @@
+spring:
+   profiles:
+      active: dev
+
+
+---
+
+# common: spring boot configuration
+spring:
+
+   # devtools - live reload
+   livereload:
+      enabled: true
+
+   # mvc
+   mvc:
+      view:
+         prefix: /WEB-INF/views/
+         suffix: .jsp
+
+   # 
+
+---
+# dev profile: spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: dev
+
+   # datasource
+   datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://192.168.0.51:3307/webdb?characterEncoding=UTF-8&serverTimezone=UTC
+      username: webdb
+      password: webdb
+      hikari:
+         minimum-idle: 10
+         maximum-pool-size: 20
+
+---
+# production profile: spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: production
+
+   # datasource
+   datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://211.14.5.6:3307/webdb?characterEncoding=UTF-8&serverTimezone=UTC
+      username: webdb
+      password: blahblahblah#dwqdqw111@
+      hikari:
+         minimum-idle: 10
+         maximum-pool-size: 20
+
+
+---
+# server
+server:
+   port: 8080
+   servlet:
+      context-path: /mysite06
+      encoding:
+         charset: utf-8
+         enabled: true
+         forced: false
+         forced-request: false
+         forced-response: false 
+
+---
+# mybatis
+mybatis:
+   config-location: classpath:mybatis/configuration.xml
+
+---
+# logging
