@@ -2,7 +2,7 @@
 @import "mysite.css";
 
 #gallery			{ margin:20px auto;	width:540px; }
-#gallery ul			{ width: 100%; }
+#gallery ul		{ width: 100%; }
 
 
 /* 이미지 업로드 팝업 레이어 */ 
