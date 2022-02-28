@@ -8,6 +8,12 @@
 		]]>
 	</select>
 
+	<select id="findByEmail" parameterType="string" resultType="uservo">
+		<![CDATA[
+		select no from user where email=#{email }
+		]]>
+	</select>
+
 	<select id="findByEmailAndPassword" parameterType="map" resultType="uservo">
 		<![CDATA[
 		select no, name, role from user where email=#{e } and password=#{p }

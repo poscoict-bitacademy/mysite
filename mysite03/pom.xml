@@ -97,6 +97,13 @@
 		    <version>2.7.4</version>
 		</dependency>
 
+		<!-- jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+		
 		<!-- Common Fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

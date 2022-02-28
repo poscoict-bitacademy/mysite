@@ -93,7 +93,7 @@ $(function(){
 							<a	href="${pageContext.request.contextPath }/assets/gallery-examples/im4.jpg"
 								data-lightbox="gallery"
 								class="image"
-								style="background-image:url('${pageContext.request.contextPath }/assets/gallery-examples/im4.jpg')">&nbsp;</a>
+								style="background-image:url('${pageContext.request.contextPath }/assets/gallery-examples/im4.jpg')"></a>
 								
 							<a	href="${pageContext.request.contextPath }/gallery/delete/4"
 								class="del-button"
