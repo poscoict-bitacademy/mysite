@@ -10,29 +10,62 @@
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
+var messageBox = function(title, message, callback) {
+	$("#dialog-message p").text(message);
+	$("#dialog-message")
+		.attr('title', title)
+		.dialog({
+			width: 340,
+			modal: true,
+			buttons: {
+				"확인": function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: callback
+		});
+}
+
 $(function() {
 	$("#join-form").submit(function(event){
 		event.preventDefault();
 		
 		// 1. 이름 유효성(empty) 체크
 		if($("#name").val() === '') {
-			alert('이름이 비어 있습니다.');
-			$("#name").focus();
+			messageBox('회원가입', '이름은 필수 항목 입니다.', function() {
+				$("#name").focus();
+			});
 			return;
 		}
 
 		// 2. 이메일 유효성(empty) 체크
+		if($("#email").val() === '') {
+			messageBox('회원가입', '이메일은 필수 항목 입니다.', function() {
+				$("#email").focus();
+			});
+			return;
+		}
 		
 		// 3. 중복체크 유무****
+		if(!$("#img-checkemail").is(':visible')) {
+			messageBox('회원가입', '이메일 중복 확인을 해주세요.');
+			return;
+		}
 		
 		// 4. 비밀번호 유효성(empty) 체크
+		if($("#password").val() === '') {
+			messageBox('회원가입', '비밀번호는 필수 항목 입니다.', function() {
+				$("#password").focus();
+			});
+			return;
+		}
 		
-		// 5. 유효성 ok
-		console.log("ok!!!");
-		
-		//$("#join-form")[0].submit();
+		// 5. ok
+		$("#join-form")[0].submit();
 	});
 	
 	$("#email").change(function(){
@@ -57,10 +90,9 @@ $(function() {
 				}
 				
 				if(response.data) {
-					alert("존재하는 이메일입니다. 다른 이메일을 사용해 주세요.");
-					$("#email")
-						.val('')
-						.focus();
+					messageBox("이메일 중복 확인", "존재하는 이메일입니다.다른 이메일을 사용해 주세요.", function(){
+						$("#email").val('').focus();
+					});
 					return;
 				}
 				
@@ -112,8 +144,8 @@ $(function() {
 					
 					<fieldset>
 						<legend>성별</legend>
-						<form:radiobutton path="gender" value="female" label="여"/>
-						<form:radiobutton path="gender" value="male" label="남"/>
+						<form:radiobutton path="gender" value="female" label="여" checked="${userVo.gender == 'female' }"/>
+						<form:radiobutton path="gender" value="male" label="남" checked="${userVo.gender == 'male' }"/>
 					</fieldset>
 					
 					<fieldset>
@@ -126,6 +158,9 @@ $(function() {
 					
 				</form:form>
 			</div>
+		</div>
+		<div id="dialog-message" title="" style="display:none">
+			<p style="line-height: 60px"></p>
 		</div>
 		<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
