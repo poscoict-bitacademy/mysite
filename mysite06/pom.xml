@@ -85,7 +85,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
 		</dependency>
-						
+
+		<!-- jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+								
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
