@@ -22,6 +22,10 @@ public class GuestbookRepository {
 	public List<GuestbookVo> findAll() {
 		return sqlSession.selectList("guestbook.findAll");
 	}
+
+	public List<GuestbookVo> findAll(Long no) {
+		return sqlSession.selectList("guestbook.findAllByNo", no);
+	}	
 	
 	public int delete(Long no, String password) {
 		GuestbookVo vo = new GuestbookVo();
